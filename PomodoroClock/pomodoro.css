@@ -1,0 +1,122 @@
+@font-face {
+  font-family: oilBats;
+  src: url(OilBats.ttf)
+}
+
+body
+{
+    background-color: #101010;
+    background-color : RGBA(10, 10, 10, 0.9)
+}
+
+h1{
+    color:white;
+    font-size: 70px;
+}
+
+h3{
+    color: #AAA;
+    font-size:45px
+}
+
+.header{
+    text-align: center;
+    font-family: oilBats;
+}
+
+.main
+{
+    margin-top: 50px;
+    background-color: #000;
+    height: 300px;
+    width: 300px;
+    border: 5px solid;
+    border-style: 
+    border-color: white;
+    border-radius: 20px;
+    padding-top:10px;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none !important;
+    color: #FFF;
+}
+
+.settings p
+{
+	font-size: 30px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	padding-left: auto;
+	padding-right: auto;
+	width: 48px;
+	height:60;
+}
+
+.settings > div{
+	text-align: center;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	height: 50px;
+}
+
+#work p{
+    color: red;
+    font-family: oilBats;
+}
+
+#break p{
+    color: green;
+    font-family: oilBats;
+}
+
+.buttons{
+    padding-top: 3px;
+    width: 290px;
+    height: 60px;
+}
+
+.round-button{
+    display: inline-block;
+    height: 55px;
+    width: 70px;
+    border-radius: 50px;
+    border: 5px solid;
+    border-color: #FFF;
+    font-family: oilBats;
+    font-weight: bold;
+    background-color: #AAA
+}
+
+.round-button:focus {
+    outline: none;
+}
+
+
+#start{
+    margin-left: 38px;
+    margin-right: 0;
+}
+
+#stop{
+    margin-right: 38px;
+    float:right;
+}
+
+.clockFrame{
+    height: 180px;
+    width: auto;
+    padding-left: 38px;
+    padding-right: 103px;
+    padding-top: 0px;
+}
+
+#clock{
+    text-align: center;
+    width: 215;
+    font-family: oilBats;
+    font-size: 35px;
+    color: #FFF;
+
+}

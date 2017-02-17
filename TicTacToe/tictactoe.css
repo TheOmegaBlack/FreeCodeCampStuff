@@ -1,0 +1,105 @@
+@font-face {
+  font-family: oilBats;
+  src: url(OilBats.ttf)
+}
+
+body
+{
+    background-color: #101010;
+    background-color : RGBA(10, 10, 10, 0.9)
+}
+
+h1{
+    color:white;
+    font-size: 70px;
+}
+
+h3{
+    color: #AAA;
+    font-size:45px
+}
+
+.header{
+    text-align: center;
+    font-family: oilBats;
+}
+
+.main
+{
+    margin-top: 50px;
+    background-color: #555;
+    height: 301px;
+    width: 300px;
+    border: 5px solid;
+    border-color: white;
+    border-radius: 20px;
+}
+
+.svg-container { 
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	padding-bottom: 100%; 
+	vertical-align: middle; 
+	overflow: hidden; 
+    display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#top-row{
+    height: 97px;
+}
+
+#middle-row{
+    height: 97px;
+}
+
+#bottom-row{
+    height: 97px;
+}
+
+.square{
+    padding: 0;
+    border-width: 1px;
+    height: 100%;
+    border-style: solid;
+    border-color: black;
+}
+
+#square7{
+    border-top: 0;
+    border-left: 0;
+}
+
+#square8{
+    border-top: 0;
+}
+
+#square9{
+    border-top: 0;
+    border-right: 0;
+}
+
+#square4{
+    border-left: 0;
+}
+
+#square6{
+    border-right: 0;
+}
+
+#square1{
+    border-left: 0;
+    border-bottom: 0;
+}
+
+#square2{
+    border-bottom: 0;
+}
+
+#square3{
+    border-right: 0;
+    border-bottom: 0;
+}

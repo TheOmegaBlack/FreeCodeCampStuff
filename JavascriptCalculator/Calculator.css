@@ -1,0 +1,133 @@
+@font-face {
+  font-family: kazooba;
+  src: url(arcadeclassic.regular.ttf)
+}
+
+body
+{
+background-color: #101010;
+background-color : RGBA(10, 10, 10, 0.9) !important;
+}
+
+.calculator-ext{
+      height : 430px;
+      width : 310px;
+      background-color : RGBA(255, 255, 255, 0.90);
+      margin-top: 30px;
+      margin-left: auto;
+      margin-right: auto;
+      border : 3px solid;
+      border-radius: 10px;
+      border-color : gray;
+      box-shadow: 0 0 20px white;
+}
+
+.calculator-top-div{
+    font-family : kazooba;
+    font-size: 20px;
+    text-align : center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    height: 30px;
+}
+
+
+.calculator-int{
+  height : 380px;
+  width : 280px;
+  background-color : #FF4136;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  margin-top: auto;
+  border-color : gray;
+  border : 1px solid;
+  overflow: auto;
+}
+
+.text-box{
+  margin-left: auto;
+  margin-right : auto;
+  margin-top: 20px;
+  background-color : #cce6ff;
+  height : 60px;
+  width: 240px;
+  border-color : black;
+  border: 2px solid;
+  border-radius : 5px;
+    
+}
+
+.display-up{
+    height : 40px;
+    width: 236px;
+    border: 0 hidden;
+    background-color : #cce6ff;
+    margin-left: auto;
+    margin-right : auto;
+    border-radius : 10px;
+    font-family: kazooba;
+    text-align: right;
+    font-size: 36px;
+}
+
+.display-low{
+    height : 10px;
+    width: 236px;
+    border: 0 hidden;
+    background-color : #cce6ff;
+    margin-left: auto;
+    margin-right : auto;
+    border-radius : 10px;
+    font-family: kazooba;
+    text-align: right;
+}
+
+.button-box{
+  margin-left: auto;
+  margin-right : auto;
+  margin-top: 10px;
+  background-color : #FFF;
+  height : 270px;
+  width: 240px;
+  border-color : black;
+  border: 2px solid;
+  border-radius : 5px;
+}
+
+.number-btn{
+    margin-top:  7px;
+    margin-left : 5px;
+    height: 50px;
+    width: 50px;
+    border-color: black;
+    border-radius: 5px;
+    border: 0px solid;
+    box-shadow: 0 3px #999;
+}
+
+.number-btn:hover {
+    background-color: #BBB;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+.clear-btn{
+    margin-top:  5px;
+    margin-left : 5px;
+    height: 25px;
+    width: 109px;
+    font-weight: bold;
+    background-color: #F87217;
+    border-radius: 5px;
+    border: 0px solid;
+    box-shadow: 0 3px #999;
+}
+
+.clear-btn:hover {
+    background-color: #E67010;
+}

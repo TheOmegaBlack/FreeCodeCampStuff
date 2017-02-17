@@ -1,0 +1,32 @@
+<html lang="en">
+	<head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="pomodoro.css">
+    </head>
+    <body>
+        <div class="header">
+            <h1>Pomodoro Clock!</h1>
+            <h3>FreeCodeCamp project</h3>
+        </div>
+        <div class = "container main">
+            <div class="row settings">
+				<div class="col-xs-2" id="workMinus"><p><a href="#">-</a></p></div>
+                <div class="col-xs-2" id="work"><p>25</p></div>
+                <div class="col-xs-2" id="workPlus"><p><a href="#">+</a></p></div>
+                <div class="col-xs-2" id="breakMinus"><p><a href="#">-</a></p></div>
+                <div class="col-xs-2" id="break"><p>5</p></div>
+                <div class="col-xs-2" id="breakPlus"><p><a href="#">+</a></p></div>
+            </div>
+            <div class="row buttons">
+                    <button class="round-button" id="start">Start!</button>
+                    <button class="round-button" id="stop">Stop!</button>
+            </div>
+            <div class="row clockframe">   
+                <p id="clock">Set the time and press start!</p></div>
+            </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="pomodoro.js"></script>
+    </body>
+</html>
