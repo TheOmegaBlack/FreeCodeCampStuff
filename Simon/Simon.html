@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Simon FreeCodeCamp Project</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="Simon.css" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="external-box col-xs-12 col-sm-offset-3 col-sm-6 col-md-4 col-md-offset-4">
+                <div class="upper-half">
+                    <div class="button-div"><button class="color-button top green" id="greenButton" disabled></button></div>
+                    <div class="button-div"><button class="color-button top red" id="redButton" disabled></button></div>
+                    <div class="button-div"><button class="color-button low yellow" id="yellowButton" disabled></button></div>
+                    <div class="button-div"><button class="color-button low blue" id="blueButton" disabled></button></div>
+                </div>
+                <div class="lower-half">
+                    <div class="display"><p class="display-text" id="displayText"></p></div>
+                    <div class="start-div"><button class="start-button" id="startButton" disabled><svg class="svg-container" width="80%" height="100%" viewBox="-6 9 150 80" preserveAspectRatio="none"><text class="svg-text" font-size="2em" x="0" y="65">Start</text></svg></button></div>
+                    <div class="lower-container">
+                        <button class="on-button" id="onButton"><span class="glyphicon glyphicon-off stretch"></span></button>
+                        <button class="strict-button" id="strictButton" disabled><span class="glyphicon glyphicon-fire stretch"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Simon.js"></script>
+</body>
+</html>
