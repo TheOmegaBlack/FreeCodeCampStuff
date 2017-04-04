@@ -1,5 +1,5 @@
 @font-face {
-    font-family: pressStart2P;
+    font-family: 'Press Start 2P';
     src: url(/fonts/PressStart2P-Regular.ttf);
 }
 
@@ -159,7 +159,7 @@ body {
 
 .display-text{
     position: absolute;
-    font-family: pressStart2P;
+    font-family: 'Press Start 2P';
     width: 80%; 
     margin: 0 10%;
     display: block;
@@ -201,7 +201,7 @@ body {
 }
 
 .svg-text {
-    font-family: pressStart2P;
+    font-family: 'Press Start 2P';
     
 }
 

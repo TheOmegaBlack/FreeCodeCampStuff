@@ -7,6 +7,7 @@ $(document).ready(function () {
     var startButton = $("#startButton");
     var onButton = $("#onButton");
     var strictButton = $("#strictButton");
+    var colorButton = $("color-button");
     var turn = 0;
     var itsOn = false;
     var isPlayerTurn = false;
@@ -37,10 +38,10 @@ $(document).ready(function () {
         setTimeout(animationStarsOff, 200);
     }
     
-    function scroll(index, interval){
-        var currentString = scrollingString.substr(index, 12);
+    function scroll(index, interval, size){
+        var currentString = scrollingString.substr(index, size);
         displayText.text(currentString);
-        if(index > scrollingString.length - 12){
+        if(index > scrollingString.length - size){
             setTimeout(function(){
                 displayText.text("");
             }, 500);
@@ -52,8 +53,15 @@ $(document).ready(function () {
         var index = 0;
         var substrSize;
         var mediaType = window.innerWidth;
+        var size;
+        if (mediaType > 400){
+            size = 12;
+        }
+        else{
+            size = 9;
+        }
         var interval = setInterval(function(){
-            scroll(index, interval);
+            scroll(index, interval, size);
             index++;
         }, 100);
     }
@@ -64,11 +72,13 @@ $(document).ready(function () {
         setTimeout(animationStars, 200);
         startButton.prop("disabled", false);
         strictButton.prop("disabled", false);
+        
     }
 
     function offAnimation() {
         startButton.prop("disabled", true);
         strictButton.prop("disabled", true);
+        colorButton
     }
 
     function makeArray() {
