@@ -102,7 +102,7 @@ body {
     background-color: #00a74a;
 }
 
-.green:active {
+.green:active, .greenact {
     background-color: #13ff7c;
 }
 
@@ -110,7 +110,7 @@ body {
     background-color: #9f0f17;
 }
 
-.red:active {
+.red:active, .redact {
     background-color: #ff4c4c;
 }
 
@@ -118,7 +118,7 @@ body {
     background-color: #cca707;
 }
 
-.yellow:active {
+.yellow:active, .yellowact {
     background-color: #fed93f;
 }
 
@@ -126,7 +126,7 @@ body {
     background-color: #094a8f;
 }
 
-.blue:active {
+.blue:active, .blueact {
     background-color: #1c8cff;
 }
 
