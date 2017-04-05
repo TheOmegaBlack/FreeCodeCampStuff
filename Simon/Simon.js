@@ -249,5 +249,3 @@ $(document).ready(function () {
         }
     })
 })
-
-//CHECK WHY THE NUMBER BLINKING IS NOT UNIFORM
