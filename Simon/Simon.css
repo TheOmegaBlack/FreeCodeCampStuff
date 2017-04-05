@@ -151,22 +151,21 @@ body {
     height: 20%;
     top: 5%;
     margin: 0 auto;
-    vertical-align: top;
     overflow: hidden;
-    padding: 0 auto;
     
 }
 
 .display-text{
     position: absolute;
     font-family: 'Press Start 2P';
-    width: 80%; 
+    width: 80%;
+    height: 100%;
     margin: 0 10%;
     display: block;
     font-size: 1.5em;
     top: 35%;
     text-align: center;
-    /*background-color: aqua; here for testing purposes*/
+    /*background-color: aqua;*/
 }
 
 .start-div {

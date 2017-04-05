@@ -9,7 +9,7 @@ $(document).ready(function () {
     var strictButton = $("#strictButton");
     var colorButton = $(".color-button");
     var turn = 0;
-    var playerTurn = 0;
+    var playerTurn;
     var itsOn = false;
     var isPlayerTurn = false;
     var onAnim = false;
@@ -23,6 +23,7 @@ $(document).ready(function () {
     var redSound = new Audio("Audio/simonSound2.mp3");
     var yellowSound = new Audio("Audio/simonSound3.mp3");
     var blueSound = new Audio("Audio/simonSound4.mp3");
+    var wrongSound = new Audio("Audio/wrong.mp3");
     var sounds = [greenSound, redSound, yellowSound, blueSound];
     var stringInterval;
 
@@ -32,12 +33,12 @@ $(document).ready(function () {
         if (starsCount < 3) {
             setTimeout(animationStars, 200);
         }
-        else{
-            if(onAnim){
+        else {
+            if (onAnim) {
                 onAnim = false;
                 startButton.prop("disabled", false);
-                strictButton.prop("disabled", false);  
-                scrolling();   
+                strictButton.prop("disabled", false);
+                scrolling();
             }
         }
     }
@@ -46,20 +47,20 @@ $(document).ready(function () {
         displayText.text("***");
         setTimeout(animationStarsOff, 200);
     }
-    
-    function scroll(index, interval, size){
+
+    function scroll(index, interval, size) {
         var currentString = scrollingString.substr(index, size);
         displayText.text(currentString);
-        if(index > scrollingString.length - size){
-            setTimeout(function(){
+        if (index > scrollingString.length - size) {
+            setTimeout(function () {
                 displayText.text("");
             }, 500);
             clearInterval(interval);
             onButton.prop("disabled", false);
         }
     }
-    
-    function scrolling(){
+
+    function scrolling() {
         var index = 0;
         var substrSize;
         var mediaType = window.innerWidth;
@@ -73,7 +74,7 @@ $(document).ready(function () {
         else {
             size = 9;
         }
-        stringInterval = setInterval(function(){
+        stringInterval = setInterval(function () {
             scroll(index, stringInterval, size);
             index++;
         }, 100);
@@ -82,12 +83,12 @@ $(document).ready(function () {
     function onAnimation() {
         onAnim = true;
         starsCount = 0;
-        setTimeout(animationStars, 200);     
+        setTimeout(animationStars, 200);
     }
 
     function offAnimation() {
         displayText.text("Goodbye");
-        setTimeout(function(){displayText.text("")}, 1000)
+        setTimeout(function () { displayText.text("") }, 1000)
         startButton.prop("disabled", true);
         strictButton.prop("disabled", true);
         colorButton.prop("disabled", true);
@@ -108,56 +109,60 @@ $(document).ready(function () {
         setTimeout(function () {
             buttons[index].removeClass(activeColors[index]);
             buttons[index].addClass(inactiveColors[index]);
-        }, 500);
-        count++;
+        }, 400);
         if (count == turn) {
             clearInterval(interval);
+            isPlayerTurn = true;
+            onButton.prop("disabled", false);
+            colorButton.prop("disabled", false);
         }
     }
 
-    function blinkOff(interval, count, blinker) {
-        displayText.text("");
-        setTimeout(function () {
-            displayText.text(blinker);
-        }, 200)
-        if (count > 3) {
-            clearInterval(interval);
+    function blinkOff(blinker, count) {
+        if (count == 2) {
+            var pcount = 0;
+            var pinterval = setInterval(function () {
+                var index = gameArray[pcount];
+                pcount++;
+                play(pinterval, pcount, index);
+            }, 1000);
         }
+        else {
+            displayText.text("");
+            count++;
+            setTimeout(function () {
+                blinkOn(blinker, count);
+            }, 200);
+        }
+    }
+
+    function blinkOn(blinker, count) {
+        displayText.text(blinker);
+        setTimeout(function () {
+            blinkOff(blinker, count);
+        }, 200);
     }
 
     function blinkTurn() {
-        var blinker
-        var count = 0;
+        var blinker;
         if (turn < 10) {
             blinker = "0" + turn;
         }
         else {
             blinker = turn;
         }
+        count = 0;
         displayText.text(blinker);
-        var interval = setInterval(function () {
-            count++;
-            blinkOff(interval, count, blinker);
+        setTimeout(function () {
+            blinkOn(blinker, count);
         }, 200)
     }
 
-    function newTurn(){
+    function newTurn() {
         turn++;
         blinkTurn();
-        if (turn < 10) {
-            displayText.text("0" + turn);
-        }
-        else {
-            displayText.text(turn);
-        }
-        var count = 0;
-        var interval = setInterval(function () {
-            var index = gameArray[count];
-            play(interval, count, index);
-        }, 500);
-        playerTurn = 0;
+        playerTurn = 1;
         isPlayerTurn = true;
-        colorButton.prop("disabled", false);
     }
 
     function pressStart() {
@@ -188,8 +193,9 @@ $(document).ready(function () {
     colorButton.on("mousedown", function () {
         if (isPlayerTurn) {
             var color = $(this).prop("id");
-            var curr = gameArray[playerTurn];
+            var curr = gameArray[playerTurn - 1];
             if (color == buttons[curr].prop("id")) {
+                colorButton.prop("disabled", true);
                 if (color == "greenButton") {
                     greenSound.play();
                 }
@@ -202,15 +208,46 @@ $(document).ready(function () {
                 else if (color == "blueButton") {
                     blueSound.play();
                 }
-                if (playerTurn = turn) {
+                if (turn == 20) {
+                    displayText.text("YOU WIN")
+                    var count = 0;
+                    var clinterval = setInterval(function () {
+                        displayText.text("")
+                        setTimeout(function (){
+                            displayText.text("YOU WIN")
+                            if (count >= 5) {
+                                clearInterval(clinterval);
+                            }
+                        }, 500)
+                    }, 500)
+                    setTimeout(pressStart, 1000);
+                }
+                else if (playerTurn == turn) {
                     isPlayerTurn = false;
                     colorButton.prop("disabled", true);
-                    newTurn()
+                    setTimeout(newTurn, 1000);
                 }
                 else {
                     playerTurn++;
+                    setTimeout(function () {
+                        colorButton.prop("disabled", false);
+                    }, 500)
                 }
+            }
+            else {
+                wrongSound.play();
+                colorButton.prop("disabled", true);
+                isPlayerTurn = false;
+                var count = 0;
+                var interval = setInterval(function () {
+                    var index = gameArray[count];
+                    count++;
+                    play(interval, count, index);                  
+                }, 1000);
+                playerTurn = 1;
             }
         }
     })
 })
+
+//CHECK WHY THE NUMBER BLINKING IS NOT UNIFORM
