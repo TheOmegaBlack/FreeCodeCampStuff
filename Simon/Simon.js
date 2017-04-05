@@ -11,6 +11,7 @@ $(document).ready(function () {
     var turn = 0;
     var playerTurn;
     var itsOn = false;
+    var itsStrict = false;
     var isPlayerTurn = false;
     var onAnim = false;
     var buttons = [greenButton, redButton, yellowButton, blueButton];
@@ -231,6 +232,18 @@ $(document).ready(function () {
         }, 300);
     }
 
+    strictButton.click(function () {
+        if (!itsStrict) {
+            itsStrict = true;
+            $("#strict").removeAttr("display");
+            pressStart();
+        }
+        else {
+            itsStrict = false;
+            $("#strict").attr("display", "none");
+        }
+    })
+
     colorButton.on("mousedown", function () {
         if (isPlayerTurn) {
             var color = $(this).prop("id");
@@ -238,20 +251,32 @@ $(document).ready(function () {
             if (color == buttons[curr].prop("id")) {
                 colorButton.prop("disabled", true);
                 if (color == "greenButton") {
-                    greenSound.pause();
-                    greenSound.play();
+                    if (greenSound.paused) {
+                        greenSound.play();
+                    } else {
+                        greenSound.currentTime = 0;
+                    }
                 }
                 else if (color == "redButton") {
-                    redSound.pause();
-                    redSound.play();
+                    if (redSound.paused) {
+                        redSound.play();
+                    } else {
+                        redSound.currentTime = 0;
+                    }
                 }
                 else if (color == "yellowButton") {
-                    yellowSound.pause();
-                    yellowSound.play();
+                    if (yellowSound.paused) {
+                        yellowSound.play();
+                    } else {
+                        yellowSound.currentTime = 0;
+                    }
                 }
                 else if (color == "blueButton") {
-                    blueSound.pause();
-                    blueSound.play();
+                    if (blueSound.paused) {
+                        blueSound.play();
+                    } else {
+                        blueSound.currentTime = 0;
+                    } blueSound
                 }
                 if (playerTurn == turn) {
                     if (turn == 20) {
@@ -272,6 +297,12 @@ $(document).ready(function () {
                 }
             }
             else {
+                if (itsStrict) {
+                    wrongSound.play();
+                    displayText.text("YOU LOSE");
+                    setTimeout(pressStart, 2000);
+                }
+                else {
                 wrongSound.play();
                 colorButton.prop("disabled", true);
                 isPlayerTurn = false;
@@ -282,6 +313,7 @@ $(document).ready(function () {
                     play(interval, count, index);                  
                 }, 1000);
                 playerTurn = 1;
+                }
             }
         }
     })
