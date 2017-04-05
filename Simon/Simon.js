@@ -118,14 +118,34 @@ $(document).ready(function () {
         }
     }
 
+    function playOne() {
+        var count = 0;
+        var index = gameArray[count];
+        buttons[index].removeClass(inactiveColors[index]);
+        buttons[index].addClass(activeColors[index]);
+        sounds[index].play();
+        setTimeout(function () {
+            buttons[index].removeClass(activeColors[index]);
+            buttons[index].addClass(inactiveColors[index]);
+        }, 400);
+        count++
+        if (count < turn) {
+            var pinterval = setInterval(function () {
+                index = gameArray[count];
+                count++;
+                play(pinterval, count, index);
+            }, 1000);
+        }
+        else {
+            isPlayerTurn = true;
+            onButton.prop("disabled", false);
+            colorButton.prop("disabled", false);
+        }
+    }
+
     function blinkOff(blinker, count) {
         if (count == 2) {
-            var pcount = 0;
-            var pinterval = setInterval(function () {
-                var index = gameArray[pcount];
-                pcount++;
-                play(pinterval, pcount, index);
-            }, 1000);
+            playOne();
         }
         else {
             displayText.text("");
@@ -190,6 +210,27 @@ $(document).ready(function () {
         pressStart();
     })
 
+    function winOff(count) {
+        displayText.text("");
+        if (count < 5) {
+            setTimeout(function () {
+                winAnimation(count)
+            }, 300)
+        }
+        else
+        {
+            setTimeout(pressStart, 1000);
+        }
+    }
+
+    function winAnimation(count) {
+        count++
+        displayText.text("YOU WIN");
+        setTimeout(function () {
+            winOff(count);
+        }, 300);
+    }
+
     colorButton.on("mousedown", function () {
         if (isPlayerTurn) {
             var color = $(this).prop("id");
@@ -197,41 +238,37 @@ $(document).ready(function () {
             if (color == buttons[curr].prop("id")) {
                 colorButton.prop("disabled", true);
                 if (color == "greenButton") {
+                    greenSound.pause();
                     greenSound.play();
                 }
                 else if (color == "redButton") {
+                    redSound.pause();
                     redSound.play();
                 }
                 else if (color == "yellowButton") {
+                    yellowSound.pause();
                     yellowSound.play();
                 }
                 else if (color == "blueButton") {
+                    blueSound.pause();
                     blueSound.play();
                 }
-                if (turn == 20) {
-                    displayText.text("YOU WIN")
-                    var count = 0;
-                    var clinterval = setInterval(function () {
-                        displayText.text("")
-                        setTimeout(function (){
-                            displayText.text("YOU WIN")
-                            if (count >= 5) {
-                                clearInterval(clinterval);
-                            }
-                        }, 500)
-                    }, 500)
-                    setTimeout(pressStart, 1000);
-                }
-                else if (playerTurn == turn) {
-                    isPlayerTurn = false;
-                    colorButton.prop("disabled", true);
-                    setTimeout(newTurn, 1000);
+                if (playerTurn == turn) {
+                    if (turn == 20) {
+                        var count = 0;
+                        winAnimation(count);
+                    }
+                    else {
+                        isPlayerTurn = false;
+                        colorButton.prop("disabled", true);
+                        setTimeout(newTurn, 1000);
+                    }
                 }
                 else {
                     playerTurn++;
                     setTimeout(function () {
                         colorButton.prop("disabled", false);
-                    }, 500)
+                    }, 100)
                 }
             }
             else {
